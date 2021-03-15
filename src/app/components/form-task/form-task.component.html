@@ -1,0 +1,47 @@
+<form>
+    <fieldset>
+        <legend>Snorkijevci</legend>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Task Title</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Enter your task..." [(ngModel)]="title" name="title">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your tasks with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Task description</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter description..."
+                [(ngModel)]="description" name="description">
+        </div>
+        <div class="form-group">
+            <label for="exampleSelect1">Priority</label>
+            <select class="form-control" id="exampleSelect1" [(ngModel)]="priority" name="priority">
+                <option>Low</option>
+                <option>Low medium</option>
+                <option>Medium</option>
+                <option>High medium</option>
+                <option>High</option>
+            </select>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <button type="button" class="btn btn-outline-primary" (click)="onAddTask()">Save task</button>
+                </div>
+                <div class="col-sm" *ngIf="emptyValues">
+                    <span class="text-success"><b>Task created!</b></span>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+<div class="list-group" class="mt-3">
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let task of tasks">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1" class="text-primary"><b>Title: </b>{{task.title}}</h5>
+            <small class="text-muted" class="text-danger"><b>{{task.createdAt}}</b></small>
+        </div>
+        <p class="mb-1" class="text-primary"><b>Description: </b>{{task.description}}</p>
+        <small class="text-muted" class="text-info"><b>Priority: </b>{{task.priority}}</small>
+    </a>
+</div>
