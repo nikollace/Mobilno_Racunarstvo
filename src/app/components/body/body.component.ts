@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Task } from 'src/app/models/Task';
 
 @Component({
   selector: 'app-body',
@@ -11,5 +12,4 @@ export class BodyComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

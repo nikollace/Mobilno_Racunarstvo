@@ -1,65 +1,43 @@
 <form>
     <fieldset>
-        <legend>Snorkijevci</legend>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Task Title</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Enter your task..." [(ngModel)]="title" name="title">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your tasks with anyone else.</small>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Task description</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter description..."
-                [(ngModel)]="description" name="description">
-        </div>
-        <div class="form-group">
-            <label for="exampleSelect1">Priority</label>
-            <select class="form-control" id="exampleSelect1" [(ngModel)]="priority" name="priority">
-                <option>Low</option>
-                <option>Low medium</option>
-                <option>Medium</option>
-                <option>High medium</option>
-                <option>High</option>
-            </select>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    <button type="button" class="btn btn-outline-primary" (click)="onAddTask()">Save task</button>
+        <div class="mx-auto" style="width: 50%;">
+            <div class="form-group pl-4">
+                <label for="exampleInputEmail1" class="mt-3">Task Title</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Enter your task..." [(ngModel)]="title" name="title">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your tasks with anyone
+                    else.</small>
+            </div>
+            <div class="form-group  mx-auto pl-4">
+                <label for="exampleInputPassword1">Task description</label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter description..."
+                    [(ngModel)]="description" name="description">
+            </div>
+            <div class="form-group mx-auto pl-4">
+                <label for="exampleSelect1">Priority</label>
+                <select class="form-control" id="exampleSelect1" [(ngModel)]="priority" name="priority">
+                    <option>Low</option>
+                    <option>Low medium</option>
+                    <option>Medium</option>
+                    <option>High medium</option>
+                    <option>High</option>
+                </select>
+            </div>
+            <div class="form-group ml-auto">
+                <div class="ml-auto" style="width: 16%;">
+                    <button type="button" class="btn btn-outline-primary mx-auto" *ngIf="!editClicked; else elseBlock" (click)="onAddTask()">Save
+                        task
+                    </button>
+                    <ng-template #elseBlock>
+                        <button type="button" class="btn btn-outline-primary mx-auto">Edit
+                            task
+                        </button>
+                    </ng-template>
                 </div>
-                <div class="alert alert-dismissible alert-success" *ngIf="emptyValues">
+                <div class="alert alert-dismissible alert-success ml-auto mt-3" *ngIf="emptyValues">
                     <strong>Well done!</strong> You successfully added a new task.
                 </div>
             </div>
         </div>
     </fieldset>
 </form>
-
-<div class="list-group" class="mt-3">
-    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let task of tasks">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1" class="text-primary"><b>Title: </b>{{task.title}}</h5>
-            <small class="text-muted" class="text-danger"><b>{{task.createdAt}}</b></small>
-        </div>
-        <p class="mb-1" class="text-primary"><b>Description: </b>{{task.description}}</p>
-        <small class="text-muted" class="text-info"><b>Priority: </b>{{task.priority}}</small>
-        <div class="container h-100" *ngIf="!task.editClicked; else save">
-            <div class="d-flex h-100">
-                <div class="align-self-end ml-auto">
-                    <button type="button" class="btn btn-outline-success" (click)="onEditTask(task.id)">Edit</button>
-                </div>
-            </div>
-        </div>
-        <ng-template #save>
-            <div class="container h-100">
-                <div class="d-flex h-100">
-                    <div class="align-self-end ml-auto">
-                        <button type="button" class="btn btn-outline-warning " (click)="saveTask(task.id)">Save</button>
-                        <button type="button" class="btn btn-outline-danger "
-                            (click)="onDeleteTask(task.id)">Delete</button>
-                    </div>
-                </div>
-            </div>
-        </ng-template>
-    </a>
-</div>

@@ -1,12 +1,14 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">TaskApp</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Pocetna <span class="sr-only">(current)</span></a>
-        </div>
+<nav class="navbar is-link">
+  <div class="navbar-start">
+    <div class="navbar-brand">
+      <a class="navbar-item title">
+        {{title}}
+        <!--{{getTitle()}}-->
+        <!--{{ title === '' ? 'Nema naslova' : 'Naslov je ' + title }}!-->
+      </a>
     </div>
+    <a class="navbar-item" routerLink="home">Home</a>
+    <a class="navbar-item" routerLink="tasks">Tasks</a>
+    <a class="navbar-item" routerLink="fun-facts">Fun Facts</a>
+  </div>
 </nav>
