@@ -37,12 +37,12 @@ export class JustService {
             task.title = title;
             task.description = description;
             task.priority = priority;
-            task.editClicked = true;
+            task.editClicked = false;
 
             this.title = title;
             this.description = description;
             this.priority = priority;
-            this.editClicked = true;
+            //this.editClicked = true;
         }
     }
 }

@@ -6,7 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
+  {path: '', component: HomeComponent},
   {path: 'tasks', component: TaskListComponent, 
   children: [
       {path: 'new', component: FormTaskComponent},

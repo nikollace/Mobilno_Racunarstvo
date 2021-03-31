@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Task } from '../../models/Task';
 import { JustService } from '../../services/todo.service';
 
@@ -16,7 +17,7 @@ export class TaskItemComponent {
 
   @Input() task: Task;
 
-  constructor(private todoService: JustService) {
+  constructor(private todoService: JustService, private router: Router) {
   }
 
   // tasks: Task[] = this.tasksService.tasks; 
@@ -51,8 +52,16 @@ export class TaskItemComponent {
   //   this.clearInputs();
   // }
 
-  onEditTask(id: string, title: string, description: string, priority: string): void {
-    this.todoService.editTask(id, title, description, priority);
+  // onEditTask(id: string, title: string, description: string, priority: string): void {
+  //   this.todoService.editTask(id, title, description, priority);
+  // }
+
+  onEditTask(task: Task): void {
+    this.todoService.editClicked = true;
+    this.task.editClicked = true;
+    this.router.navigate(
+      ['tasks', task.id, 'edit'],
+     {queryParams: {id: task.id, title: task.title, description: task.description, priority: task.priority}});
   }
 
   onDeleteTask(id: string): void {

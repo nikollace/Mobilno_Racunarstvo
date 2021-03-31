@@ -15,6 +15,7 @@ export class FormTaskComponent implements OnInit {
 
   tasks: Task[] = this.todoService.tasks;
 
+  id= '';
   title= '';
   description= '';
   priority= '';
@@ -25,9 +26,11 @@ export class FormTaskComponent implements OnInit {
     this.description = this.route.snapshot.queryParams.description;
     this.priority = this.route.snapshot.queryParams.priority;
     this.route.queryParams.subscribe((queryParams: Params) => {
+      this.id = queryParams.id;
       this.title = queryParams.title;
       this.description = queryParams.description;
       this.priority = queryParams.priority;
+      this.editClicked = this.todoService.editClicked;
     })
   }
 
@@ -97,5 +100,10 @@ export class FormTaskComponent implements OnInit {
         }
       }
     }
+  }
+
+  onEditTask(): void {
+    this.todoService.editTask(this.id, this.title, this.description, this.priority);
+    this.editClicked = false;
   }
 }

@@ -23,9 +23,9 @@ export class TaskListComponent implements OnInit {
     this.router.navigateByUrl('/tasks/new');
   }
 
-  onEditTask(task: Task): void {
-    this.router.navigate(
-      ['tasks', task.id, 'edit'],
-     {queryParams: {title: task.title, description: task.description, priority: task.priority}});
-  }
+  // onEditTask(task: Task): void {
+  //   this.router.navigate(
+  //     ['tasks', task.id, 'edit'],
+  //    {queryParams: {title: task.title, description: task.description, priority: task.priority}});
+  // }
 }

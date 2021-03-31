@@ -2,5 +2,5 @@
     <button class="button is-link" (click)="onAddTask()">Add quote</button>
 </div>
 <router-outlet></router-outlet>
-<app-task-item *ngFor="let task of tasks" [task]="task" (click)="onEditTask(task)">
+<app-task-item *ngFor="let task of tasks" [task]="task">
 </app-task-item>
